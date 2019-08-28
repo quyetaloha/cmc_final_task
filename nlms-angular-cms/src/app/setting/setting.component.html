@@ -1,0 +1,67 @@
+<div class="main-card mb-3 card"
+    *ngIf="isTableSetting">
+    <div class="card-header">
+        Active Users 
+        <div class="btn-actions-pane-right">
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">#ID</th>
+                    <th>GroupType</th>
+                    <th>Name</th>
+                    <th>Value</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let setting of listSetting">
+                    <td class="text-center text-muted">#{{setting.id}}</td>
+                    <td>{{setting.groupType}}</td>
+                    <td>{{setting.name}}</td>
+                    <td>{{setting.value}}</td>
+                    <td>{{setting.description}}</td>
+                    <td class="text-center">
+                        <button class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-outline-primary" (click)="deleteSetting()"><i class="fas fa-tools"></i></button>
+                        <button class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-block text-center card-footer">
+        <button class="btn-shadow btn-wide btn btn-success" (click)="showFormNewSetting()"><i aria-hidden="true" class="fa fa-plus mr-2"></i>New Setting</button>
+    </div>
+</div>
+<!-- Form Them Setting -->
+<div class="card-body mb-5" style=" width: 60%; 
+            background-color: #e9ecef; 
+            border-radius: 7px;
+            margin: 0px auto;" *ngIf="isFormAddSetting">
+
+    <h5 class="card-title">Cấu hình thông tin danh mục</h5>
+    <form novalidate="" class="ng-untouched ng-pristine ng-valid">
+        <div class="position-relative form-group">
+            <label for="groupType">Group</label>
+            <select class="form-control" id="groupType" name="select" [(ngModel)]="groupTypeC">
+                <option *ngFor="let groupType of listGroupType">{{groupType}}</option>
+            </select>
+        </div>
+        <div class="position-relative form-group">
+            <label for="nameConfig">Tên cấu hình</label>
+            <input class="form-control" id="nameConfig" name="name-config"
+                placeholder="Nhập tên cấu hình của cấu hình." type="text" [(ngModel)]="name">
+        </div>
+        <div class="position-relative form-group">
+            <label for="valueConfig">Giá trị cấu hình</label>
+            <input class="form-control" id="valueConfig" name="value-config"
+                placeholder="Nhập giá trị của cấu hình." type="text" [(ngModel)]="value">
+        </div>
+        <div class="position-relative form-group"><label for="exampleText">Mô tả</label>
+            <textarea class="form-control" id="exampleText" name="text" [(ngModel)]="description"></textarea></div>
+        <button class="mt-1 btn btn-primary" (click)="onClick()">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,138 @@
+<header>
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-light">
+        <!-- <a  href="#">Navbar</a> -->
+        <img class="navbar-brand" src="/assets/img/cmcgloballogo.png" alt="User Icon" [routerLink]="['/index']"
+            alt="User Icon" />
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <div class="nav-link" [routerLink]="['/list-post']">
+                        BLOG
+                        <span class="sr-only"></span>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link" [routerLink]="['/list-course']">
+                        COURSE
+                    </div>
+                </li>
+                <li class="body-li">
+                    <a class="nav-item dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        TEST<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="nav-item" href="#">Open Test</a></li>
+                        <li><a class="nav-item" href="#">Exam Simulation</a></li>
+                        <li><a class="nav-item" href="#">Focused Test</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item">
+                    <div class="nav-link" [routerLink]="['/contact']">
+                        CONTACT
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link">
+                        PRACTICE
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <form class="form-inline ml-1 my-lg-3" (ngSubmit)="onSearch()">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
+                        name="search" [(ngModel)]="searchQuery">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </ul>
+            <ul class="navbar-nav" *ngIf="loggedin">
+                <li class="nav-item nav-my-course" [routerLink]="['/mycourse']">
+                    <a class="nav-link">
+                        MY COURSE
+                        <span class="sr-only"></span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mx-3">
+                <li class="user-avatar">
+                    <div class="shopping-cart" [routerLink]="['/cart']">
+                        <i class="fas fa-shopping-cart">
+                            <span class="quantity-cart">{{quantitycart}}</span>
+                        </i>
+                    </div>
+                    <ul class="user-content">
+                        <li *ngFor="let cart of arrCart">
+                            <div class="row">
+                                <!-- phan cart  -->
+                                <div class="col-md-4">
+                                    <div class="course-header-img"><img src="{{cart.imgUrl}}"></div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="course-header">
+                                        <div class="course-header-name">
+                                            <p>{{cart.name}}</p>
+                                        </div>
+                                        <div class="course-header-author">
+                                            <p>By {{cart.trainer.fullName}}</p>
+                                        </div>
+                                        <div class="course-header-cost">
+                                            <span class="course-header-cost-new">{{cart.salePrice}} $</span>
+                                            <span class="course-header-cost-old"><del>{{cart.originPrice}}
+                                                    $</del></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="messeage-cart" *ngIf="messageCart">
+                                <p>{{messageCart}}</p>
+                                <i [routerLink]="['/list-course']">Shopping Now</i>
+                            </div>
+                            <div class="messeage-cart" *ngIf="!messageCart">
+                                <i [routerLink]="['/list-course']">Continue Shopping</i>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav" *ngIf="!loggedin">
+                <li class="header-login">
+                    <button type="button" class="btn btn-danger mr-2" [routerLink]="['/login']">Login</button></li>
+                <li class="header-regesters">
+                    <button type="button" class="btn btn-outline-secondary" [routerLink]="['/register']">Sign
+                        up</button>
+                </li>
+            </ul>
+            <ul class="navbar-nav" *ngIf="loggedin">
+                <li class="user-avatar">
+                    <div class="user-avatar-body">
+                        <img [src]="currentUser.avatarUrl" onerror="this.src='/assets/img/default.png'">
+                    </div>
+                    <ul class="user-content">
+                        <li [routerLink]="['/user-profile']">
+                            <span class="user-avatar-body">
+                                <img [src]="currentUser.avatarUrl" onerror="this.src='/assets/img/default.png'">
+                            </span>
+                            <span><a href=""> {{userNameInfor}}</a></span>
+
+                        </li>
+                        <li><a [routerLink]="['/user-profile']">User Profile</a></li>
+                        <li><a [routerLink]="['/mycourse']">My Courses</a></li>
+                        <li><a [routerLink]="['/favourite']">Favourite Course</a></li>
+                        <li><a [routerLink]="['/orderHistory']">Order History</a></li>
+                        <li><a (click)="onLogoutClick()">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

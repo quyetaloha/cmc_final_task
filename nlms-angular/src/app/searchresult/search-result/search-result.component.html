@@ -1,0 +1,162 @@
+<ngx-spinner>
+	<p style="color: white">Loading...</p>
+</ngx-spinner>
+<app-header></app-header>
+<app-slider></app-slider>
+<div class="container-fluid">
+  <!-- phan search + filter -->
+  <div class="row my-3">
+    <!-- phan list course -->
+  </div>
+  <div class="row my-3 mt-3 justify-content-center" *ngIf="(listCourse | courseNameFilter:query).length >0">
+    <div class="ct-area vc_separator ">
+      <span class="vc_sep_holder vc_sep_holder_l">
+        <span class="vc_sep_line"></span>
+      </span>
+      <h4 class="heading_font">Found Course</h4>
+      <span class="vc_sep_holder vc_sep_holder_r">
+        <span class="vc_sep_line"></span>
+      </span>
+    </div>
+  </div>
+  <div class="row justify-content-center mx-5 mt-5">
+
+    <div class="col-md-3 col-sm-6 col-10" *ngFor="let course of listCourse | courseNameFilter:query">
+      <div class="course">
+        <figure class="effect-bubba">
+          <div class="effect-success">
+            <div class="course-image">
+              <img src={{course.imgUrl}} [routerLink]="['/course-detail', course.id]">
+            </div>
+            <div class="course-text">
+              <!-- <p class="title-cour">Study Online</p> -->
+              <h4 class="mt-3">
+                <span>{{course.briefInfo|stringshortpipe:"45"}}</span>
+              </h4>
+              <hr style="margin: 0px 0px 10px 0px">
+              <div class="course-text-infor">
+                <span>
+                  <img class="teacher-img" [src]="course.trainer.avatarUrl">
+                  <span style="line-height: 50px; font-size: 13px">{{course.trainer.fullName}}</span>
+                </span>
+              </div>
+              <div class="rank">
+                <ul>
+                  <span class="time-cost">Rating:</span>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </ul>
+              </div>
+              <div class="clearfix"></div>
+              <hr style="margin-bottom: 0px">
+              <div class="course-text-content">
+                <p class="time-cors">
+                  <span>
+                    <i class="far fa-clock"></i>
+                    <span class="time-cost">Total time: {{course.courselength|lengthMinuteToTimeFormat}} </span>
+                  </span>
+                </p>
+                <p class="price">
+                  <span class="time-cost">Cost: </span>
+                  <del>${{course.originPrice}}</del>
+                  <ins>${{course.salePrice}}</ins>
+                </p>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            <h5>{{course.briefInfo|stringshortpipe:"50"}}</h5>
+
+            <p class="depcription">
+              <strong>Description:</strong>
+              {{course.description|stringshortpipe:"110"}}
+            </p>
+            <p class="depcription">
+              <strong>Teacher: </strong>
+            </p>
+            <p class="depcription">
+              <strong>Time: </strong> {{course.courselength|lengthMinuteToTimeFormat}}
+              <i class="far fa-clock"></i>
+            </p>
+            <p class="depcription">
+              <strong>Video: </strong> {{course.numberOfLecture}}
+              <i class="fas fa-video"></i>
+            </p>
+            <p class="depcription">
+              <strong>Cost: </strong> {{course.salePrice}}
+              <i class="fas fa-dollar-sign"></i>
+            </p>
+          </figcaption>
+        </figure>
+        <div class="course-bot">
+          <button class="button-default" [routerLink]="['/course-detail', course.id]">Detail</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row my-3 mt-3 justify-content-center" *ngIf="posts.length>0">
+    <div class="ct-area vc_separator ">
+      <span class="vc_sep_holder vc_sep_holder_l">
+        <span class="vc_sep_line"></span>
+      </span>
+      <h4 class="heading_font">Found blog </h4>
+      <span class="vc_sep_holder vc_sep_holder_r">
+        <span class="vc_sep_line"></span>
+      </span>
+    </div>
+  </div>
+</div>
+  <div class="container-fluid mb-5">
+    <div class="row justify-content-center mx-5 mt-5">
+
+      <div class="col-md-3 mt-4" *ngFor="let post of posts">
+        <div class="popular-blog-body">
+          <article  class="entry entry-post" [ngStyle]="{'background-image': 'url(' + post.imgUrl + ')'}"
+            [routerLink]="['/blog-detail', post.id]">
+            <div class="text-over px-4 pb-2">
+              <div class="entry-c">
+                <div class="entry-categories">
+                  <p class="bg-fashion">new!</p>
+                </div>
+                <div class="entry-title">
+                  <h3 class="text-popular" [routerLink]="['/blog-detail', post.id]">{{post.title}}</h3>
+                </div>
+                <div class="entry-meta clearfix">
+                  <li>
+                    <span>by {{post.createdByUser}}</span>
+                  </li>
+                  <li>
+                    <i class="far fa-clock"></i>
+                    <span>{{post.createdDate | date}}</span>
+                  </li>
+                  <li>
+                    <span>View: 111.111</span>
+                  </li>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="logo-banner">
+      <ul>
+        <li><img src="assets/listCourse/img/logo-banner1.png"></li>
+        <li><img src="assets/listCourse/img/logo-banner2.png"></li>
+        <li><img src="assets/listCourse/img/logo-banner3.png"></li>
+        <li><img src="assets/listCourse/img/logo-honda.png"></li>
+        <li><img src="assets/listCourse/img/logo-toshiba.png"></li>
+        <li><img src="assets/listCourse/img/logo-lg-cns.png"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

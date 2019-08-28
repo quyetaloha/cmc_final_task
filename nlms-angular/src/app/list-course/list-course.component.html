@@ -1,0 +1,157 @@
+<ngx-spinner>
+	<p style="color: white">Loading...</p>
+</ngx-spinner>
+<app-header></app-header>
+<app-slider></app-slider>
+<div class="container-fluid">
+	<!-- phan search + filter -->
+	<div class="row my-3">
+		<div class="col-md-4 col-sm-2 col-4 mx-5">
+			<div class="selceted-categories">
+				<div class="btn-group">
+					<button class="btn  btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Categories
+					</button>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" *ngFor="let category of categorys" (click)="onSelectCategory($event,category.id)" href="#">{{category.name}}</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-md-4 col-sm-4 col-5 offset-md-3 offset-sm-4 offset-xs-1">
+			<div class="input-group">
+				<input [(ngModel)]="tmpKeySearch" class="form-control" type="text" placeholder="Search.." name="search">
+				<div class="input-group-btn">
+					<button (click)="onSearch()" type="submit" class="form-control" ><i class="fa fa-search"></i></button>
+				</div>
+
+
+			</div>
+		</div>
+		<!-- phan list course -->
+	</div>
+	<div class="row my-3 mt-3 justify-content-center">
+		<div class="ct-area vc_separator ">
+			<span class="vc_sep_holder vc_sep_holder_l">
+				<span class="vc_sep_line"></span>
+			</span>
+			<h4 class="heading_font">Course List</h4>
+			<span class="vc_sep_holder vc_sep_holder_r">
+				<span class="vc_sep_line"></span>
+			</span>
+		</div>
+	</div>
+	<div class="row justify-content-center mx-5 my-5">
+
+		<div class="col-md-3 col-sm-6 col-10"
+		style="height: 500px;"
+		 *ngFor="let course of currentCoursePageData|listCourseFilter:keySearch:selectedCategoryID:categorys">
+			<div  class="course">
+				<figure class="effect-bubba">
+					<div class="effect-success">
+						<div class="course-image">
+							<img src={{course.imgUrl}} [routerLink]="['/course-detail', course.id]">
+						</div>
+						<div class="course-text">
+							<!-- <p class="title-cour">Study Online</p> -->
+							<h4>
+								<span>{{course.briefInfo|stringshortpipe:"45"}}</span>
+							</h4>
+							<hr style="margin: 0px 0px 10px 0px">
+							<div class="course-text-infor">
+								<span>
+									<img class="teacher-img" [src]="course.trainer.avatarUrl">
+									<span style="line-height: 50px; font-size: 11px">{{course.trainer.fullName}}</span>
+								</span>
+							</div>
+							<div class="rank">
+
+								<ul>
+									<span class="time-cost">Rating:</span>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+								</ul>
+							</div>
+							<div class="clearfix"></div>
+							<hr style="margin-bottom: 0px">
+							<div class="course-text-content">
+								<p class="time-cors mt-2" >
+									<span>
+										<i class="far fa-clock mr-2"></i>
+										<span class="time-cost">Total time: {{course.courselength|lengthMinuteToTimeFormat}} </span>
+									</span>
+								</p>
+								<p class="price" >
+									<span class="time-cost">Cost: </span>
+									<del>${{course.originPrice}}</del>
+									<ins>${{course.salePrice}}</ins>
+								</p>
+							</div>
+
+						</div>
+				
+
+					</div>
+					<figcaption>
+						<h5>{{course.briefInfo|stringshortpipe:"70"}}</h5>
+						
+						<p class="depcription">
+							<strong>Description:</strong>
+							{{course.description|stringshortpipe:"70"}}
+						</p>
+						<p class="depcription">
+							<strong>Teacher: </strong>
+						</p>
+						<p class="depcription">
+							<strong>Time: </strong> {{course.courselength|lengthMinuteToTimeFormat}}
+							<i class="far fa-clock"></i>
+						</p>
+						<p class="depcription">
+							<strong>Video: </strong> {{course.numberOfLecture}}
+							<i class="fas fa-video"></i>
+						</p>
+						<p class="depcription">
+							<strong>Cost: </strong> {{course.salePrice}}
+							<i class="fas fa-dollar-sign"></i>
+						</p>
+					</figcaption>
+				</figure>
+				<div class="course-bot">
+					<button class="button-default" [routerLink]="['/course-detail', course.id]">Detail</button>
+					<span class="favorite"><i class="fas fa-heart"></i></span>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="text-center">
+		<ul style="display: inline-flex" class="pagination">
+			<li  class="page-item"><a class="page-link" href="#" (click)="onPreviousPage($event,courses)">Trước</a></li>
+			<li [ngClass]="currentPage==(index+1)?'active':''" *ngFor="let index of page" class="page-item"><a class="page-link" href="#" (click)="onPage($event,index+1,courses)">{{index+1}}</a></li>
+			
+			<li class="page-item"><a class="page-link" href="#" (click)="onNextPage($event,courses)">Kế tiếp</a></li>
+		  </ul>
+	</div>
+<!-- phan logo -->
+	<div class="row">
+		<div class="logo-banner">
+			<ul>
+				<li><img src="assets/listCourse/img/logo-banner1.png"></li>
+				<li><img src="assets/listCourse/img/logo-banner2.png"></li>
+				<li><img src="assets/listCourse/img/logo-banner3.png"></li>
+				<li><img src="assets/listCourse/img/logo-honda.png"></li>
+				<li><img src="assets/listCourse/img/logo-toshiba.png"></li>
+				<li><img src="assets/listCourse/img/logo-lg-cns.png"></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- phan logo -->
+
+<app-footer></app-footer>

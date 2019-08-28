@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"  >
+<head>
+	<title> Sending Email  </title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Menu</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="1.css">
+
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+	</script>
+</head>
+<body ng-app="myApp" ng-controller="MyController">
+
+
+
+	<table align="center" border="0" cellpadding="0" cellspacing="0"
+	width="600" style="border-collapse: collapse;">
+
+	<tr>
+		<td align="center" bgcolor="#299be4" style="padding: 8px 0 5px 3px;">
+			<p>
+				<a href="#"><img src="images/cmc.jpg" style="height: 83px;" class="avatar" alt="Avatar">
+				CMC Global</a>
+			</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td bgcolor="#eaeaea" style="padding: 40px 3px 40px 3px;">
+			<p th:text="${'Dear ' + token.fullName}"></p>
+			<p>
+				You've registered in our website.<br><a th:href="${resetUrl}"> Click here to confirm your registration.</a>
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#299be4" style="padding: 0px 3px 10px 3px;">
+			<small>CMC Global © 2019. All Rights Reserved.</small>
+		</td>
+	</tr>
+</table>
+
+
+
+<script type="text/javascript" src="vendor/bootstrap.js"></script>  
+<script type="text/javascript" src="vendor/angular-1.5.min.js"></script>  
+<script type="text/javascript" src="vendor/angular-animate.min.js"></script>
+<script type="text/javascript" src="vendor/angular-aria.min.js"></script>
+<script type="text/javascript" src="vendor/angular-messages.min.js"></script>
+<script type="text/javascript" src="vendor/angular-material.min.js"></script>  
+<script type="text/javascript" src="1.js"></script>
+</body>
+</html>

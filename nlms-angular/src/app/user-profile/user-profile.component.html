@@ -1,0 +1,130 @@
+<app-header></app-header>
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img [src]="avatarUrl" alt="" />
+                    <!-- <div class="file btn btn-lg btn-primary">
+                                <span > Change Photo</span>
+                                <input type="file" name="file"/>
+                            </div> -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>
+                        {{fullname}}
+                    </h5>
+                    <h6>
+                        Web Developer and Designer
+                    </h6>
+                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="true">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                aria-controls="profile" aria-selected="false">ChangePassword</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <!--   <div class="col-md-2">
+                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    </div> -->
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <p>WORK LINK</p>
+                    <a href="https://cmcglobal.com.vn/">Website Link</a><br />
+                    <a href="">Bootsnipp Profile</a><br />
+
+                    <p>SKILLS</p>
+                    <a href="">Web Designer</a><br />
+                    <a href="">Web Developer</a><br />
+                    <a href="">FullStack PHP</a><br />
+                    <a href="">WooCommerce</a><br />
+
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Full Name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{fullname}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{email}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Mobile</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{phone}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Gender</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Male</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                        <div class="row">
+                            <div class="col-sm-6">
+
+                                <label>Current Password</label>
+                                <div class="form-group pass_show">
+                                    <input type="password" value="" class="form-control" placeholder="Current Password"
+                                        [(ngModel)]="currentPass" name="currentPass">
+                                </div>
+                                <label>New Password</label>
+                                <div class="form-group pass_show">
+                                    <input type="password" value="" class="form-control" placeholder="New Password"
+                                        [(ngModel)]="newPass" name="newPass">
+                                </div>
+                                <label>Confirm Password</label>
+                                <div class="form-group pass_show">
+                                    <input type="password" value="" class="form-control" placeholder="Confirm Password"
+                                        [(ngModel)]="confirmPass" name="confirmPass">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <button type="button" class="btn btn-primary" (click)="changepass2()">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- end footer  -->
+
+<app-footer></app-footer>

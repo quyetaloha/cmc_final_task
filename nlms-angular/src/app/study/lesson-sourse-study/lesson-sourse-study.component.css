@@ -1,0 +1,348 @@
+.img-header{
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+  
+  
+  .head-content{
+      height: 15px;
+      margin: 20px;
+    }
+    .head-course{
+      height: 50px;
+    }
+    .content-head-course{
+      margin-top:20px;
+      margin-bottom: 20px; 
+      width: 100%;
+      height: 40px;
+      background-color: #fff;
+      line-height: 40px;
+      border-radius: 7px;
+    }
+  
+    .content-head-course a{
+      padding-left: 15px;
+      color: #42a5f5;
+      text-decoration: none;
+      background-color: transparent;
+    }
+    .title-lessons p{
+      width: 50%;
+      font-size: 11px;
+      display: block;
+      margin: 0px auto;
+    }
+    .content-course{
+      margin: 20px 0px;
+      height: 550px;
+      width: 100%;
+      background-color: #fff;
+    }
+    .block{
+      width: 100%;
+      height: 500px;
+      box-shadow: 0 0 10px #dee2e5;
+      opacity: 1;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+    .lessons{
+      width: 90%;
+      height: 75%;
+      margin: 15px auto;
+    }
+    .lesson-icon a::before{
+      content: "\f87c";
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      text-align: center;
+      width: 1.25em;
+      margin-right: 10px;
+      font-size: .75em;
+    }
+    .block-video{
+      width: 100%;
+      height: 90%;
+    }
+    .video-course{
+      width: 100%;
+      height: 100%;
+    }
+    .dieu-huong{
+      width: 100%;
+      height: 10%;
+      background: linear-gradient(90deg,#7fc9ecdb,#066bbb);
+    }
+    .btn:focus { 
+      outline: none; 
+    }
+    .dieu-huong .row{
+     margin-right: 0; 
+     height: 100%;
+   }
+   .btn-primary{
+    height: 100%;
+    background-color: #0165d1;
+  }
+  .title-lessons{
+    width: 100%;
+    height: 70px;
+    color: #fff;
+    align-items: center;
+    border-bottom: 1px solid #a79f9f;
+  }
+  .title-lessons > h3{
+    font-size: 1.142857rem;
+    margin: 10px; 
+    padding-top: 10px;
+  }
+  .bg-gd-primary{
+    background: linear-gradient(155deg,#0c80df 0%,#5ab1f6 100%);
+  }
+  .video{
+    margin: 10px;
+  }
+  .bg-video{
+    background: linear-gradient(155deg,#0c80df 0%,#5ab1f6 100%);
+    margin-top:10px;
+  }
+  .list-group-item-action {
+    width: 100%;
+    color: #575757;
+    text-align: inherit;
+  }
+  .block-list-lesson{
+    background-color: white;
+  }
+  .my-custom-scrollbar {
+    position: relative;
+    overflow: auto;
+    height: 90%;
+    border-radius: 4px;
+  }
+  
+  .my-custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 4px;
+  } 
+  .my-custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(155deg,#0c80df 0%,#5ab1f6 35%);
+    border-radius: 4px;
+  }
+  .table-wrapper-scroll-y {
+    display: block;
+  }
+  
+  .a {
+    border-radius: unset;
+  }
+  
+  .fa, .fas {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+  }
+  .fa-fw {
+    text-align: center;
+    width: 1.25em;
+  }
+  
+  .title-lessons > .progress{
+    height: 12px;
+    border-radius: 6px;
+    margin: 5px;
+  }
+  .progress-bar{
+    background-color: #ff7600;
+  }
+  .input-group{
+    margin-bottom: 10px; 
+  }
+  .detail-lesson{
+    width: 100%;
+    min-height:500px;
+    background-color: #fff;
+    margin: 30px auto;
+    box-shadow: 0 0 35px #dee2e5;
+    border-radius: 7px;
+  }
+  .name-lesson{
+    height: 70px;
+    border-bottom: 1px solid #c4c4c4;
+    overflow-x: visible; 
+    padding: 10px 30px;
+  }
+  .name-lesson h2{
+    height: 50px;
+    line-height: 50px;
+  }
+  .content-docum h2::before{
+    content: "\f0d7";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    text-align: center;
+    width: 1.25em;
+    margin-right: 10px;
+    font-size: .75em;
+  }
+  .content-docum h2{
+    font-size: 2.25rem;
+    color: #80058d;
+  }
+  .content-docum{
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .menu-docum{
+    min-height: 300px;
+    line-height: 1.6;
+  }
+  .menu-docum h2{
+    font-size: 19px;
+    margin-bottom: 15px;
+  
+  }
+  .document-outline ul{
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  .document-outline a{
+    color: #222c37;
+    padding-left: 10px;
+    border-left: 3px solid #fff;
+    line-height: 1.8;
+    text-decoration: none;
+  }
+  .document-outline a.active{
+    border-left: 3px solid #800080;
+    font-weight: 600;
+    color: #800080;
+  }
+  .banner {background-color: #505763;width: 100%;padding-bottom: 15px;}
+  .banner .row{
+  margin-bottom: 30px;
+  }
+  .banner .content-right .detail{
+  padding-bottom: 5px;
+  }
+  .icon {
+  display: flex;
+  justify-content: flex-end;
+  }
+  .left{
+  width: 66%;
+  }
+  .right{
+  width: 33%;
+  }
+  .wishlist{
+  margin-top: 5px;
+  }
+  .left .namesourse h1 {
+  color: white;
+  font-size: 36px;
+  line-height: 41px;
+  }
+  .left .description{
+  color: #bbbaba;
+  font-size: 21px;
+  line-height: 27px;
+  }
+  .left .rating .badge.badge-accented.yellow {
+  background: #f4c150;
+  color: #29303b;
+  margin-right: 10px;
+  margin-top: 5px;
+  height: 5%;
+  
+  }
+  .left .rating {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  }
+  .left .rating .star {
+  margin-right: 10px;
+  }
+  .left .rating .rate-count{
+  color: white;
+  margin-right: 10px;
+  }
+  .left .author{
+  margin-top: 5px;
+  color: white;
+  font-size: 15px;
+  }
+  .left .language{
+  margin-top: 5px;
+  color: white;
+  }
+  .left .language .fas.fa-comment{
+  font-size: 15px;
+  }
+  .right {
+  background-color: white;
+  border-radius: 5px;
+  }
+  .right .right-content{
+  padding: 1px;
+  }
+  .right img{
+  width: 100%;
+  height: 100%;
+  }
+  .right .avatar .title{
+  font-size: 15px;
+  margin-bottom: 10px;
+  text-align: center;
+  }
+  .right .cost {
+  text-align: center;
+  }
+  .right .detail .new-cost {
+  color: #505763;
+  font-weight: 700;
+  font-size: 30px;
+  margin-right: 10px;
+  }
+  .right .detail .old-cost {
+  text-decoration: line-through;
+  color: #a1a7b3;
+  font-size: 20px;
+  }
+  .right .button1{
+  width: 80%;
+  text-align: center;
+  background-color: #e21d1d;
+  margin: auto;
+  /*margin-left: 30px;*/
+  }
+  .right .button1:hover {
+  background-color: #d65b5b;
+  }
+  .right .button1 span{
+  display: block;
+  padding: 15px;
+  color: #fff;
+  font-size: 15px;
+  }
+  .right .button2{
+  width: 80%;
+  text-align: center;
+  background-color: #fff;
+  margin: auto;
+  /*margin-left: 30px;*/
+  margin-top: 5px;
+  }
+  .right .button2 span{
+  display: block;
+  padding: 15px;
+  color: #686f7a;
+  font-size: 15px;
+  background-color: #fff;
+  border: 1px solid #686f7a;
+  }
+  .right .button2:hover span {
+  color: black;
+  }

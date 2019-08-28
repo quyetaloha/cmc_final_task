@@ -1,0 +1,89 @@
+<ngx-spinner>
+    <p style="color: white">Loading...</p>
+</ngx-spinner>
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="row blog-detail-img"><img src="{{post.imgUrl}}"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <article class="entry mt-5 px-3">
+                    <div class="entry-title entry-title-blog-detail">
+                        <h3>{{post.title}}</h3>
+                    </div>
+                    <ul class="entry-meta clearfix">
+                        <li>
+                            <span>by {{post.createdByUser}}</span>
+                        </li>
+                        <li>
+                            <i class="far fa-clock"></i>
+                            <span>{{post.createdDate | date}}</span>
+                        </li>
+                    </ul>
+                    <div class="entry-content clearfix">
+                        {{post.briefInfo}}<br />
+                        <div [innerHTML]="post.content"></div>
+                    </div>
+                </article>
+                <div class="row tag">
+                    <div class="col-md-7 mb-5">
+                        <div class="entry-title entry-title-blog-detail">
+                            <h3>Tag:</h3>
+                        </div>
+                        <span class="tag-link">
+                            <a href="">travel</a>
+                            <a href="">travel</a>
+                            <a href="">travel</a>
+                            <a href="">travel</a>
+                            <a href="">travel</a>
+                            <a href="">travel</a>
+                            <a href="">travel</a>
+                            <a href="">travel</a>
+                            <a href="">travel</a>
+                            <a href="">travel</a>
+                            <a href="">travel</a>
+                            <a href="">travel</a>
+                            <a href="">travel</a>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="lastest-blog-detail-title mt-5">
+                    <h4 class="mb-0 pr-2 title-blog">Lastest Blog</h4>
+                </div>
+                <div class="line line-xs line-sports"></div>
+                <div class="lastest-blog-detailarticle">
+
+                    <article class="spost article-blog-detail clearfix" *ngFor="let recentPost of recentPosts">
+                        <div class="entry-img">
+                            <img src="{{recentPost.imgUrl}}">
+                        </div>
+                        <div class="entry-c">
+                            <div class="entry-title">
+                                <a href="/blog-detail/{{recentPost.id}}">
+                                    <h4>{{recentPost.title}}</h4>
+                                </a>
+                            </div>
+                            <ul class="entry-meta clearfix">
+                                <li>
+                                    <span>{{recentPost.createdByUser}}</span>
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i>
+                                    <span>{{recentPost.createdDate | date}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<app-footer></app-footer>

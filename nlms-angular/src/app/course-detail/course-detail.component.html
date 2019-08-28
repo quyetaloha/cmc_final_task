@@ -1,0 +1,263 @@
+<ngx-spinner>
+	<p style="color: white">Loading...</p>
+</ngx-spinner>
+<app-header></app-header>
+<div class="banner">
+	<div class="container">
+		<div class="row1">
+			<div class="col-xs-12 icon">
+				<div class="wishlist">
+					<div class="button1">
+						<i class="far fa-heart" style="color: white;font-size: 20px;margin-right: 5px;" (click)="addToFavourite()"></i>
+								<span style="color: white;font-size: 20px">Favourite</span> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 col-sm-12 col-xs-12 justify-content-center left">
+				<div class="content-left my-5">
+					<div class="title">
+						<div class="namesourse">
+							<h1>{{course.name}}</h1>
+						</div>
+						<div class="description">
+							{{course.briefInfo}}
+						</div>
+					</div>
+					<div class="rating">
+						<span class="badge badge-accented yellow"> Bestseller</span>
+						<div class="star" style="color: yellow">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<div class="rate-count">
+							<span> 5 (172,123 rating)</span>
+							<span> 635,141 students enrolled</span>
+						</div>
+					</div>
+					<div class="author">
+						<span style="color: white;font-size: 15px;">Created by </span>
+						<span style="color: #e6f2f5">{{course.createdBy}}</span>
+					</div>
+					<div class="language">
+						<i class="fas fa-comment"></i>
+						<span>Vietnamese</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-12 col-xs-12  right">
+				<div class="content-right">
+					<div class="avatar ">
+						<img src="{{course.imgUrl}}" alt="">
+						<!-- 	<div class="title">Preview this course</div> -->
+
+					</div>
+					<div class="detail">
+						<div class="cost">
+							<span class="new-cost">${{course.originPrice}}</span>
+							<span class="old-cost">${{course.salePrice}}</span>
+						</div>
+						<div class="button1" (click)="addToCart(course)" *ngIf="action == 'cart'">
+							<span>Add to cart</span>
+						</div>
+						<div class="button1" (click)="study(course)" *ngIf="action == 'study'">
+							<span>Study Now</span>
+						</div>
+						<div class="button1" *ngIf="action == 'none'">
+							<span>Item already in cart</span>
+						</div>
+						<div class="button2" (click)="checkout(course)" *ngIf="action == 'cart'">
+							<span>Buy Now</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="main">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 row-left">
+				<div class=" detail-course">
+					<div class="title">
+						<span>Requirement</span>
+					</div>
+					<ul class="list">
+						<li class="list-item">
+							<span class="udi udi-check what-you-get__icon "><i class="fas fa-check mr-1"></i></span>
+							<span class="text">{{course.requirement}}</span>
+
+						</li>
+						<!-- <li class="list-item">
+
+
+							<span class="udi udi-check what-you-get__icon"><i class="fas fa-check"></i></span>
+							<span class="text">Learn to use Python professionally, learning both Python 2 and Python
+								3</span>
+
+						</li>
+
+						<li class="list-item">
+
+
+							<span class="udi udi-check what-you-get__icon"><i class="fas fa-check"></i></span>
+							<span class="text">Learn to use Python professionally, learning both Python 2 and Python
+								3</span>
+
+						</li>
+
+						<li class="list-item">
+
+
+							<span class="udi udi-check what-you-get__icon"><i class="fas fa-check"></i></span>
+							<span class="text">Learn to use Python professionally, learning both Python 2 and Python
+								3</span>
+
+						</li> -->
+
+
+					</ul>
+				</div>
+				<div class=" left-col cource-content">
+					<div class="main-content">
+						<div class="main-header">
+							<div class="header-left">
+								<span> Course content</span>
+							</div>
+
+						</div>
+						<div class="main-detail" *ngFor="let lesson of course.listLesson">
+							<div class="section">
+								<div class="section-header">
+									<div class="section-header-left">
+										<!-- 	<span class="section-title-toggle"></span> -->
+										<span class="section-header-left-name">{{lesson.name}}</span>
+									</div>
+									<div class="section-header-right"> </div>
+								</div>
+								<div class="section-detail" *ngFor="let les of lesson.listLesson">
+									<div class="section-detail-name">
+										<span><i class="fab fa-youtube"></i> <a>{{les.name}}</a>
+										</span>
+										<span class="play"> <a href=""><i class="fas fa-play"></i></a></span>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- latest post  -->
+			<div class="col-md-4  latest-post">
+				<div class="row my-3 justify-content-center">
+					<div class="ct-area vc_separator ">
+						<span class="vc_sep_holder vc_sep_holder_l">
+							<span class="vc_sep_line"></span>
+						</span>
+						<h4 class="heading_font">Relative Post</h4>
+						<span class="vc_sep_holder vc_sep_holder_r">
+							<span class="vc_sep_line"></span>
+						</span>
+					</div>
+				</div>
+				<!-- 	<h4>Relative Post</h4> -->
+				<div class="latest-post-detail">
+					<div class="row " *ngFor="let post of posts">
+
+						<div class="col-md-5  post-img"><img
+								src="{{post.imgUrl}}"></div>
+						<div class="col-md-7 ">
+							<div>
+								<a href="/blog-detail/{{post.id}}"><span>{{post.title}}</span></a>
+							</div>
+							<p>{{post.createdByUser}}</p>
+						</div>
+
+					</div>
+					<!-- <div class="row">
+						<div class="col-md-5 post-img"><img
+								src="https://i.udemycdn.com/course/240x135/2231800_f1d7_4.jpg"></div>
+						<div class="col-md-7   ">
+							<div>
+								<span>Sau login: Order History...</span>
+							</div>
+							<p>24/05/2019</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-5 post-img">
+							<img src="https://i.udemycdn.com/course/240x135/2231800_f1d7_4.jpg"></div>
+						<div class="col-md-7 ">
+							<div>
+								<span>Sau login: Order History...</span>
+							</div>
+							<p>24/05/2019</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-5 post-img"><img
+								src="https://i.udemycdn.com/course/240x135/2231800_f1d7_4.jpg"></div>
+						<div class="col-md-7 ">
+							<div>
+								<span>Sau login: Order History...</span>
+							</div>
+							<p>24/05/2019</p>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-5 post-img"><img
+								src="https://i.udemycdn.com/course/240x135/2231800_f1d7_4.jpg"></div>
+						<div class="col-md-7 ">
+							<div>
+								<span>Sau login: Order History...</span>
+							</div>
+							<p>24/05/2019</p>
+						</div>
+					</div> -->
+
+				</div>
+
+			</div>
+			<!-- end latest post -->
+
+			<div class="col-md-8 description">
+				<div class="description-detail">
+					<div class="description-title">
+						<span>Description</span>
+					</div>
+					<div class="description-word">
+						<p>{{course.description}}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 fb">
+				<div class="fb-root">
+					<div class="fb-root-title">
+						<span>Facebook Comment</span>
+					</div>
+				</div>
+				<div></div>
+				<!-- Your embedded comments code -->
+				<div class="fb-comment-embed"
+					data-href="https://www.facebook.com/zuck/posts/10102735452532991?comment_id=1070233703036185"
+					data-width="700">
+				</div>
+				<div class="fb-comment-embed"
+					data-href="https://www.facebook.com/zuck/posts/10108280403736331?comment_id=131565298086611&comment_tracking=%7B%22tn%22%3A%22R%22%7D"
+					data-width="700">
+				</div>
+			</div> <!-- end fb -->
+		</div>
+	</div>
+</div>
+<app-footer></app-footer>

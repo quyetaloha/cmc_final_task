@@ -1,0 +1,73 @@
+
+ <div class="container">
+ <div class="login-form" *ngIf="!submitted">
+        <div class="imgcontainer">
+            <img src="/assets/img/cmcgloballogo.png" alt="logo" class="logo">
+        </div>
+        <form #heroForm="ngForm">
+            <h2 class="text-center">Sign in</h2>   
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    <input type="text" id="username" class="form-control mb-2" placeholder="Username" required [(ngModel)] ="user.username" name="username" #username="ngModel" >  
+
+                </div>
+                	<div [hidden]="username.valid || username.pristine"
+     						class="alert alert-danger">
+ 							Username is required
+					</div>
+
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                    <input type="password" class="form-control mb-2" name="password" placeholder="Password" required [(ngModel)] ="user.password" name="password"
+                    #password="ngModel">
+                                
+                </div>
+                <div [hidden]="password.valid || password.pristine"
+     						class="alert alert-danger">
+ 							Password is required
+					</div> 
+            </div>        
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary login-btn btn-block" [disabled]="!heroForm.form.valid" (click)="onClick(user);">Sign in</button>
+            </div>
+            <div class="clearfix">
+                <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+                <a (click)="onSubmit($event)" class="pull-right">Forgot Password ?</a>
+            </div>
+            <div class="or-seperator"><i>or</i></div>
+            <p class="text-center">Login with your social media account</p>
+            <div class="text-center social-btn">
+                <a href="#" class="btn btn-primary"><i class="fab fa-facebook-f pr-1"></i>&nbsp; Facebook</a>
+                <a href="#" class="btn btn-danger"><i class="fab fa-google-plus-g pr-1"></i>&nbsp; Google</a>
+            </div>
+        </form>
+        <p class="text-center text-muted small">Don't have an account? <a routerLink="/register">Sign up here!</a></p>
+</div>
+	<div *ngIf="submitted">
+		<div class="login-form">
+        <div class="imgcontainer">
+            <img src="./assets/images/cmc.jpg" alt="logo" class="logo">
+        </div>
+        <form #heroForm="ngForm">
+            <h2 class="text-center">Forgot Password?</h2>   
+            <p>Enter your email address and we will send you instructions on how to reset your password.</p><br>
+           <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-envelope">&#xe0be;</i></span>
+                    <input type="text" class="form-control mb-2" name="confirmEmail" placeholder="Email" required [(ngModel)] ="user.email">             
+                </div>
+            </div>      
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary login-btn btn-block" [disabled]="!heroForm.form.valid" (click)="onRest(user.email);">Reset Password</button>
+                <button type="submit" class="btn btn-primary login-btn btn-block" (click)="onBack();">Quay lại đăng nhập</button>
+            </div>
+                     
+        </form>
+        <p class="text-center text-muted small">Don't have an account? <a  routerLink="/register">Sign up here!</a></p>
+
+    </div>	
+	</div>	
+</div>

@@ -1,0 +1,234 @@
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h2>Course <b>Management</b></h2>
+                </div>
+                <div class="col-sm-7">
+
+                    <div class="col-xs-7">
+                        <input class="form-control" id="ex2" type="text" placeholder="Search"[(ngModel)]="searchName">
+                    </div>
+
+                    <a (click)="onSubmit($event)" class="btn btn-primary mr"><i class="fas fa-plus-circle"></i> <span>
+                            <b>Thêm mới</b> </span></a>
+                    <!-- <button class="btn aqua-gradient btn-rounded b" type="submit">Search</button>						 -->
+                </div>
+            </div>
+        </div>
+        <div [hidden]="submitted">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên</th>
+                        <th>Hiển thị</th>
+                        <th>Mô tả</th>
+                        <th>Yêu cầu</th>
+                        <th>Tác giả</th>
+                        <th>Thiết lập</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let list of dataArr |filterCourse   :searchName" (click)="onSend(list.id);">
+                        <td>{{list.id}}</td>
+                        <td><a (click)="open(content)">
+                            <img src="{{list.imgUrl}}"
+                         style="height: 43px;" class="avatar" alt="Avatar">{{list.name}}</a></td>
+                        <td>{{list.briefInfo}}</td>
+                        <td>{{list.description}}</td>
+                        <td>{{list.requirement}}</td>
+                        <td>{{list.trainer.fullName}}</td>
+                        <td>
+                            <a (click)="onSetting(list);" class="edit" title="Edit" data-toggle="tooltip">
+                                <i class="fas fa-pen"></i>
+                            </a>
+
+                            <a class="settings" title="Delete" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Do you want to delete it?</h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">Select "delete" below if you are ready to delete your item.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button"
+                                            data-dismiss="modal">Cancel</button>
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                            (click)="onDelete(list);">Delete</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ng-template #content let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">{{list.name}}</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+
+                                <div class="row justify-content-center">
+
+                                                <div class="my-4"> <img alt="User Pic" src={{list.imgUrl}} style="height: 170px;
+                                                    width: 338px;"
+                                                    class="img-circle img-responsive"></div>
+                                            <table class="table table-user-information ">
+                                                    
+                                                <tbody>
+                                                    
+                                                    <tr>
+                                                        <td >BrieftInfor:</td>
+                                                        <td>{{list.briefInfo}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td >Description:</td>
+                                                        <td>{{list.description}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td >Requirement:</td>
+                                                        <td>{{list.requirement}}</td>
+                                                    </tr>
+                                                    <tr *ngFor="let lessons of list.listLesson; index as i">
+                                                        <td>Lessons {{i+1}}:</td>
+                                                        
+                                                        <td>{{lessons.name}}
+                                                            <ul *ngFor="let less of lessons.listLesson">
+                                                                <li>{{less.name}}</li>
+                                                            </ul>
+                                                        </td>
+                                                        
+                                                        
+                                                    
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        <!-- </div> -->
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                            </div>
+                        </ng-template>
+
+
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="clearfix">
+                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <ul class="pagination">
+                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div [hidden]="!submitted">
+        <form>
+
+            <div class="controls">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">Name</label>
+                        <input id="form_name" type="text" name="name" class="form-control" placeholder="group1" required
+                            data-error="Name is required." [(ngModel)]="course.name">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">BriefInfo</label>
+                        <textarea id="form_name" cols="78" rows="10" type="text" name="briefInfo" class="form-control"
+                            placeholder="type" required data-error="Name is required."
+                            [(ngModel)]="course.briefInfo"></textarea>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">Courselength</label>
+                        <input id="form_name" type="text" name="courselength" class="form-control" placeholder="type"
+                            required data-error="Name is required." [(ngModel)]="course.courselength">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">Description</label>
+                        <textarea id="form_name" cols="78" rows="10" type="text" name="description" class="form-control"
+                            placeholder="type" required data-error="Name is required."
+                            [(ngModel)]="course.description"></textarea>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">OriginPrice</label>
+                        <input id="form_name" type="text" name="originPrice" class="form-control" placeholder="type"
+                            required data-error="Name is required." [(ngModel)]="course.originPrice">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">salePrice</label>
+                        <input id="form_name" type="text" name="salePrice" class="form-control" placeholder="type"
+                            required data-error="Name is required." [(ngModel)]="course.salePrice">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">NumberofLecture</label>
+                        <input id="form_name" type="text" name="numberOfLecture" class="form-control" placeholder="type"
+                            required data-error="Name is required." [(ngModel)]="course.numberOfLecture">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">Requirement</label>
+                        <input id="form_name" type="text" name="requirement" class="form-control" placeholder="type"
+                            required data-error="Name is required." [(ngModel)]="course.requirement">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">Img</label>
+                        <input id="form_name" type="text" name="img_url" class="form-control" placeholder="type"
+                            required data-error="Name is required." [(ngModel)]="course.imgUrl">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-success btn-send" (click)="onClick(course)" value="+Add">
+                    <input type="submit" class="btn btn-default" (click)="onBack($event)" value="Close">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

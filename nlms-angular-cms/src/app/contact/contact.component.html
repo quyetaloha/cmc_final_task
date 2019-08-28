@@ -1,0 +1,143 @@
+<div class="container">
+    <div class="table-wrapper">
+
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-5">
+            <h2>Contact <b>Management</b></h2>
+          </div>
+          <div class="col-sm-7">
+            <div class="col-xs-7">
+              <input class="form-control" id="ex2" type="text" placeholder="Search" [(ngModel)]="searchName">
+            </div>
+                 
+            <a (click)="onSubmit($event)" class="btn btn-primary mr"><i class="fas fa-plus-circle"></i> <span> <b>Thêm mới</b> </span></a>   
+          </div>
+        </div>
+      </div>
+  <div [hidden]="submitted">    
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên</th>            
+            <!-- <th>Mô tả</th> -->
+            <th>Email</th>
+            <th>Message</th>
+            <th>Người xử lý</th>            
+            <th>Trạng thái</th>
+            <th>Thiết lập</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of dataArr |filterstatus:searchName">  
+            <td>{{list.id}}</td>
+            <td>{{list.name}}</td>
+           
+            <td>{{list.email}}</td> 
+            <td>{{list.message}}</td>   
+            <td>{{list.lastModifiedByUser}}</td>
+            <td><span class="status text-success">&bull;</span>{{list.status}}</td> 
+            <!-- <td>
+				
+				a  class="settings" title="Delete" data-toggle="tooltip">
+          <i class="fas fa-trash"></i> -->
+
+          <td>
+            <a (click)="onSetting(list);" class="edit" title="Edit" data-toggle="tooltip">
+              <i class="fas fa-pen"></i>
+            </a>						
+
+            <a href="#" class="settings" title="Delete"  data-toggle="modal" data-target="#logoutModal">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+
+				
+                    
+          </tr>
+        </tbody>
+      </table>
+      <div class="clearfix">
+        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+        <ul class="pagination">
+          <li class="page-item disabled"><a href="#">Previous</a></li>
+          <li class="page-item"><a href="#" class="page-link">1</a></li>
+          <li class="page-item"><a href="#" class="page-link">2</a></li>
+          <li class="page-item active"><a href="#" class="page-link">3</a></li>
+          <li class="page-item"><a href="#" class="page-link">4</a></li>
+          <li class="page-item"><a href="#" class="page-link">5</a></li>
+          <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+      </div>
+    </div>
+  </div> 
+  <div [hidden]="!submitted">
+    <form>
+
+    <div class="controls">
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="form_name">Name*</label>
+          <input id="form_name" type="text" name="name" class="form-control" placeholder="Tiêu đề" required="required" data-error="Name is required." [(ngModel)]="contact.name">
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>  
+      
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="form_email">Email*</label>
+          <input id="form_name" type="email" name="email" class="form-control" placeholder="Email" required="required" [(ngModel)]="contact.email">
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="form_lastname">Message *</label>
+          <textarea id="form_message" name="message" class="form-control" rows="4" required [(ngModel)]="contact.message"></textarea>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="form_message">Status *</label>
+          <select name="select" [(ngModel)]="selectedValue" (change)="onChange($event.target.value)">
+            <option *ngFor="let c of countries" value={{c.name}}>{{c.name}}</option>
+         </select>`       
+        </div>
+      </div>
+      <div class="col-md-12">
+		<input type="submit" class="btn btn-success btn-send"  (click)="onClick(contact)" value="+Add">
+		<input type="submit" class="btn btn-default" (click)="onBack($event)" value="Close">
+      </div>
+    </div>
+  </form> 
+</div>
+
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Do you want to delete it?</h5>
+      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">Select "delete" below if you are ready to delete your item.</div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+      <a class="btn btn-primary" (click)="onDelete(list);">Delete</a>
+    </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+</div>  
+
+

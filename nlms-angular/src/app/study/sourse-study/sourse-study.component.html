@@ -1,0 +1,198 @@
+<app-header></app-header>
+<!-- Banner lesson -->
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 icon">
+                <div class="wishlist">
+                    <div class="button1">
+                        <!-- <i class="far fa-heart" style="color: white;font-size: 20px"></i>
+                    <span style="color: white;font-size: 20px">WishList</span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-sm-12 col-xs-12 left">
+                <div class="content-left">
+                    <div class="title">
+                        <div class="namesourse">
+                            <h1>{{course.name}}</h1>
+                        </div>
+                        <div class="description">
+                            {{course.briefInfo}}
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <span class="badge badge-accented yellow"> Bestseller</span>
+                        <div class="star" style="color: yellow">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="rate-count">
+                            <span> 5 (172,123 rating)</span>
+                            <span> 635,141 students enrolled</span>
+                        </div>
+                    </div>
+                    <div class="author">
+                        <span style="color: #3385ff;font-size: 15px;">Created by </span>
+                        <span style="color: #3385ff"></span>
+                    </div>
+                    <div class="language">
+                        <i class="fas fa-comment"></i>
+                        <span>Vietnamese</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12  right img-header">
+                <div class="content-right">
+                    <div class="avatar">
+                        <img [src]="course.imgUrl" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End banner -->
+<div class="container">
+    <div class="row head-course">
+        <!-- Head -->
+        <div class="col-md-12">
+            <div class="content-head-course">
+                <a class="breadcrumb-item" href="#"><i class="fas fa-home"></i></a>
+                <a class="breadcrumb-item" href="#">{{course.name}}</a>
+                <!-- <span class="breadcrumb-item active">{{lesson.name}}</span> -->
+            </div>
+        </div>
+    </div>
+    <div class="row content-course">
+        <!-- content -->
+        <div class="col-md-4">
+            <div class="block bg-gd-primary">
+                <div class="title-lessons">
+                    <h3><i class="fa fa-fw fa-list"></i>DANH SÁCH BÀI HỌC</h3>
+                    <div class="progress">
+                        <mat-progress-bar mode="determinate" value="{{(dem/course.numberOfLecture)*100}}">
+                        </mat-progress-bar>
+                    </div>
+                    <p>Completed {{dem}} out of {{course.numberOfLecture}}</p>
+                </div>
+                <div class="lessons">
+                    <div class="input-group" style="padding-left: 0;">
+                        <input type="text" name="" id="input-search" class="form-control a"
+                            placeholder="Tìm bài học...">
+                        <span class="input-group-text a"><i class="fas fa-search"></i></span>
+                    </div>
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar lesson-icon">
+                        <div class="card" *ngFor="let lesson of course.listLesson">
+                            <div class="card-header" role="tab" id="headingOne">
+                                <div data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
+                                    {{lesson.name}}
+                                </div>
+                            </div>
+                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="card-body p-0">
+                                    <ul class="list-group cat-list">
+                                        <li class="list-group-item" *ngFor="let sublesson of lesson.listLesson">
+                                            <a
+                                                [routerLink]="[ '/course-study/', course.id, sublesson.id ]">{{sublesson.name}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="block bg-video">
+                <div class="dieu-huong">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <a class="btn btn-primary btn-noborder btn-circle btn-prevLecture js-tooltip-enabled disable"
+                                data-toggle="tooltip" data-placement="right" data-original-title="Bài trước"
+                                style="height: 50px; color: #fff"><i class="fa fa-arrow-left fa-fw mt-2"></i></a>
+                        </div>
+                        <div class="col-md-10">
+                            <h3
+                                style="text-align: center; color: #fff;  line-height: 50px; height: 50px; font-size: 20px;">
+                                {{lesson.name}}</h3>
+                        </div>
+                        <div class="col-md-1">
+                            <a class="btn btn-primary btn-noborder btn-circle btn-nextLecture js-tooltip-enabled"
+                                href="#" data-toggle="tooltip" data-placement="left" data-original-title="Bài sau"
+                                style="height:50px;" [routerLink]="[ '/course-study/', course.id, lessonNext.id ]"><i
+                                    class="fa fa-arrow-right fa-fw mt-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-video">
+                    <iframe class="video-course" [src]="getEmbebUrl()" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p>
+            <embed [src]="pdfUrl()" type="application/pdf" width="100%" height="600px" />
+        </p>
+    </div>
+    <!-- <div class="detail-lesson">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="name-lesson">
+                    <h2>Lesson 1</h2>
+                </div>
+                <div style="margin: 40px;">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="content-docum">
+                                <div>
+                                    <h2 id="docum-0" class>Noi dung 1</h2>
+                                    <div>jdlajdlkadlakjdlkadk</div>
+                                    <hr>
+                                </div>
+                                <div>
+                                    <h2 id="docum-1">Noi dung 2</h2>
+                                    <div>jdlajdlkadlakjdlkadk</div>
+                                    <hr>
+                                </div>
+                                <div>
+                                    <h2 id="docum-2">Noi dung 3</h2>
+                                    <div>jdlajdlkadlakjdlkadk</div>
+                                    <hr>
+                                </div>
+                                <div>
+                                    <h2 id="docum-3">Noi dung 4</h2>
+                                    <div>jdlajdlkadlakjdlkadk</div>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="menu-docum doc-out-fixed-top">
+                                <h2>Nội dung bài học</h2>
+                                <div class="document-outline">
+                                    <ul>
+                                        <li><a href="#docum-0">Noi dung 1</a></li>
+                                        <li><a href="#docum-1">Noi dung 1</a></li>
+                                        <li><a href="#docum-2">Noi dung 1</a></li>
+                                        <li><a href="#docum-3">Noi dung 1</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>
+<app-footer></app-footer>

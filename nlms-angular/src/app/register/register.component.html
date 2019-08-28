@@ -1,0 +1,93 @@
+<div class="login-form">
+		<div class="imgcontainer">
+			<!-- <img src="./assets/images/cmc.jpg" alt="logo" class="logo"> -->
+		</div>
+		<form  #heroForm="ngForm">
+			<h2 class="text-center">Create Account</h2>  
+			<p class="text-center">Get started with your free account</p>
+
+			<div class="text-center social-btn">
+				<a href="#" class="btn btn-primary"><i class="fab fa-facebook-f pr-1"></i>&nbsp; Facebook</a>
+				<!-- <a href="#" class="btn btn-info"><i class="fa fa-twitter"></i>&nbsp; Twitter</a> -->
+				<a href="#" class="btn btn-danger"><i class="fab fa-google-plus-g pr-1"></i>&nbsp; Google</a>
+			</div>
+			<br>
+			<div class="or-seperator"><i>or</i></div>
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-text"><i class="fa fa-user"></i></span>
+					<input type="text" class="form-control mb-2" name="fullname" placeholder="Fullname" required [(ngModel)] ="user.fullname" #fullname="ngModel">             
+				</div>
+				<div [hidden]="fullname.valid || fullname.pristine"
+     						class="alert alert-danger">
+ 							Fullname is required
+				</div>
+			</div> 
+
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-text"><i class="fa fa-user"></i></span>
+					<input type="text" class="form-control mb-2" name="username" placeholder="Username" required [(ngModel)] ="user.username" #username="ngModel">             
+				</div>
+				<div [hidden]="username.valid || username.pristine"
+     						class="alert alert-danger">
+ 							Username is required
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-text"><i class="fas fa-envelope" style="width:11px"></i></span>
+					<input type="text" class="form-control mb-2" name="email" placeholder="Email" required [(ngModel)] ="user.email" #email="ngModel">             
+				</div>
+				<div [hidden]="email.valid || email.pristine"
+     						class="alert alert-danger">
+ 							Email is required
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-text"><i class="fas fa-mobile"></i></span>
+					<input type="text" class="form-control mb-2" name="phone" placeholder="Phone" required [(ngModel)] ="user.phone" #phone="ngModel">             
+				</div>
+				<div [hidden]="phone.valid || phone.pristine"
+     						class="alert alert-danger">
+ 							Phone is required
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-text"><i class="fa fa-lock"></i></span>
+					<input type="password" class="form-control mb-2" name="password" placeholder="Password" required [(ngModel)] ="user.password" #password="ngModel">             
+				</div>
+				<div [hidden]="password.valid || password.pristine"
+     						class="alert alert-danger">
+ 							Password is required
+				</div>
+			</div>     
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-text"><i class="fa fa-lock"></i></span>
+					<input type="password" class="form-control mb-2" name="ConfirmPassword" placeholder="ConfirmPassword" required [(ngModel)] ="confirm" #ConfirmPassword="ngModel"
+					pattern="{{user.password}}">             
+				</div>
+				<div [hidden]="ConfirmPassword.valid || ConfirmPassword.pristine"
+     						class="alert alert-danger">
+ 							Confirm is required
+				</div>
+			</div>   
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary login-btn btn-block" [disabled]="!heroForm.form.valid"  (click)="onClick(user);">Sign up</button>
+			</div>
+			<div class="clearfix">
+				<small>By clicking the Sign Up button, you agree to our 
+					    Terms & Conditions, and Privacy Policy.</small>
+				<br>
+			</div>
+			<p class="text-center">Already have an account? <a [routerLink]="['/login']">Sign in here!</a></p>
+			<!-- <div class="or-seperator"><i>or</i></div>
+				<p class="text-center">Sign up with your social media account or email address</p> -->
+
+			</form>
+
+		</div>

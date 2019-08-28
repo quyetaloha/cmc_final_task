@@ -1,0 +1,12 @@
+.fa-shopping-cart{
+    position: relative;
+  }
+  .quantity-cart{
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 3px;
+    padding: 2px;
+    color: rgba(44, 130, 201, 1);
+    /* background-color: ; */
+    border-radius: 5px;
+  }

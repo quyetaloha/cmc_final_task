@@ -1,0 +1,369 @@
+<body id="page-top">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1">Admin Management</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <marquee width="50%" style="color: white;"> C.OPE2N – CMC Open Ecosystem for Enterprise- allows CMC members,
+      enterprises and clients can link and share data resources in a digital environment, connect with global technology
+      partners, share knowledge and succeed together. Made by Anglar-PTIT!!!</marquee>
+
+    <!-- Navbar Search -->
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search"
+          aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </form>
+  
+      <!-- Navbar -->
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow mx-1">
+          <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bell fa-fw"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown no-arrow mx-1">
+          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-envelope fa-fw"></i>
+        
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="avatar avatar-sm rounded-circle">
+              <img alt="Image placeholder" src="{{avatar}}">
+            </span> 
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <div class="az-img-user">
+                <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="{{avatar}}">
+                  </span>
+                  <h6>{{name}} {{role}}</h6>
+            </div> 
+            <br>
+            <!-- <span>Premium admin</span>  -->
+            <a class="dropdown-item" (click)="onClick('user_profile')"><i class="fas fa-cog"></i> Settings</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"> <i class="far fa-life-ring"></i> Activity Log</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" (click)="onClick('logout')" ><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </li>
+      </ul>
+  
+    </nav>
+  
+    <div id="wrapper">
+  
+      <!-- Sidebar -->
+      <!-- <div> -->
+        <ul class="sidebar navbar-nav ">
+          <li class="nav-item active">
+            <a class="nav-link" (click)="onClick('dashboard')">
+              <i class="fas fa-fw fa-tachometer-alt"></i>
+              <span> Dashboard</span>
+            </a>
+          </li>
+    
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" 
+            id="pagesDropdown" role="button" data-toggle="dropdown"
+             
+            aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-fw fa-folder"></i>
+              <span> Learning</span>
+            </a>
+            <ul  class="dropdown-menu" aria-labelledby="pagesDropdown">
+           
+              <li class="nav-item" (click)="onClick('course')"><a >Course</a></li>
+              <li class="nav-item" (click)="onClick('lesson')"><a >Lesson</a></li>
+              <!-- <hr style="background-color: white; width: 50%; margin-left: -10px;"> -->
+              <!-- <div class="clear-both"></div> -->
+              
+              <!-- <li><a href="404.html">404 Page</a></li>
+              <li ><a href="blank.html">Blank Page</a></li> -->
+            </ul>
+            <!-- <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+              <h6 class="dropdown-header">Learning:</h6>
+              <a class="dropdown-item" (click)="onClick('course')">Course</a>
+              <a class="dropdown-item" (click)="onClick('lesson')">Lesson</a>
+              <div class="dropdown-divider"></div>
+              <h6 class="dropdown-header">Other Pages:</h6>
+              <a class="dropdown-item" href="404.html">404 Page</a>
+              <a class="dropdown-item" href="blank.html">Blank Page</a>
+            </div> -->
+          </li>
+    
+    
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle"
+               href="#" id="pagesDropdown" 
+             
+               role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+               <i class="fas fa-fw fa-table"></i>
+               <span> Tables User</span>
+             </a>
+             <ul  class="dropdown-menu" aria-labelledby="pagesDropdown">
+               <li class="nav-item"  (click)="onClick('menu')"><a>Menu</a></li>
+               <li class="nav-item" (click)="onClick('permission')"><a >Permission</a></li>
+               <li class="nav-item" (click)="onClick('roles')"><a >Roles</a></li>
+               <hr style="background-color: white; width: 50%; margin-left: -10px;">
+               <li class="nav-item" (click)="onClick('contact')"><a >Contact</a></li>
+               <li class="nav-item" (click)="onClick('group')"><a >Group</a></li>
+               <li class="nav-item" (click)="onClick('users_list')"><a>Users List </a></li>
+               <li class="nav-item" (click)="onClick('users_details')"><a> User Details</a></li>
+               <li class="nav-item" (click)="onClick('users_roles')"><a >User Roles</a></li>
+               <!-- <li> <a  href="404.html">404 Page</a></li>
+               <li><a href="blank.html">Blank Page</a></li>
+               -->
+             </ul>
+  <!--   
+               <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <h6 class="dropdown-header">System Config Screens:</h6>
+                <a class="dropdown-item" (click)="onClick('menu')">Menu</a>
+                <a class="dropdown-item" (click)="onClick('permission')">Permission</a>
+                <a class="dropdown-item" (click)="onClick('roles')">Roles</a>
+                
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-header">User Mgnt Pages:</h6>
+                <a class="dropdown-item" (click)="onClick('contact')">Contact</a>
+                <a class="dropdown-item" (click)="onClick('group')">Group</a>
+                <a class="dropdown-item" (click)="onClick('users_list')">Users List </a>
+                <a class="dropdown-item" (click)="onClick('users_details')">User Details</a>
+                <a class="dropdown-item" (click)="onClick('users_roles')">User Roles</a>
+                <a class="dropdown-item" href="404.html">404 Page</a>
+                <a class="dropdown-item" href="blank.html">Blank Page</a>
+              </div> -->
+    
+          </li>
+          <li class="nav-item dropdown">
+              <!-- <a class="nav-link" href="tables.html"> -->
+              <a class="nav-link dropdown-toggle" href="#" 
+              id="pagesDropdown" role="button"
+              data-target="#submenu-3"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-table"></i>
+                <span> Public Contents</span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <li class="nav-item" (click)="onClick('posts')"><a  >Posts</a></li>
+                <li class="nav-item" (click)="onClick('sliders')"><a  >Sliders</a>   </li>
+              </ul>
+    
+                <!-- <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                  <h6 class="dropdown-header">Contents Screens:</h6>
+                  <a class="dropdown-item"  (click)="onClick('posts')">Posts</a>
+                  <a class="dropdown-item"  (click)="onClick('sliders')">Sliders</a>     
+              </div> -->
+          </li>
+    
+    
+          <li class="nav-item">
+            <a class="nav-link" >
+              <i class="fas fa-fw fa-chart-area"></i>
+              <span> Charts</span></a>
+          </li>
+    
+    
+        </ul>
+      <!-- </div> -->
+      
+  
+      <div id="content-wrapper">
+        <div class="container-fluid">
+  
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Overview</li>
+          </ol>
+  
+          <!-- Icon Cards-->
+          <div class="row" *ngIf = "state == 'dashboard'">
+            <div class="col-xl-3 col-sm-6 mb-3">
+              <div class="card text-white bg-primary o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <div class="mr-5">{{length2}} New User!</div>
+                </div>
+                <div class="mr-5">{{length2}} New User!</div>
+              </div>
+              <a class="card-footer text-white clearfix small z-1" (click)="onClick('users_details')">
+                <span class="float-left">View Details</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-warning o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fas fa-fw fa-list"></i>
+                </div>
+                <div class="mr-5">{{length4}} Course!</div>
+              </div>
+              <a class="card-footer text-white clearfix small z-1" (click)="onClick('course')">
+                <span class="float-left">View Details</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-success o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fas fa-fw fa-shopping-cart"></i>
+                </div>
+                <div class="mr-5">{{length1}} New Orders!</div>
+              </div>
+              <a class="card-footer text-white clearfix small z-1" (click)="onClick('user_course')">
+                <span class="float-left">View Details</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-danger o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fas fa-fw fa-life-ring"></i>
+                </div>
+                <div class="mr-5">{{length3}} New Contact!</div>
+              </div>
+              <a class="card-footer text-white clearfix small z-1" (click)="onClick('contact')">
+                <span class="float-left">View Details</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+  
+          <div class="card mb-3" *ngIf="state=='dashboard'">
+            <div class="card-header">
+              <i class="fas fa-fw fa-table"></i>
+                Area Data Table Example
+            </div>
+
+            <div class="card-body">
+                <h3 >Hello Admin!!</h3>
+                <img src="./assets/images/cmc.jpg" alt="">
+
+        <div class="card mb-3" *ngIf="state=='dashboard'">
+          <div class="card-header">
+            <i class="fas fa-fw fa-table"></i>
+
+            Area Data Table Example
+          </div>
+
+          <div class="card-body">
+            <h3>Hello Admin!!</h3>
+            <img src="./assets/images/cmc.jpg" alt="">
+
+            <canvas id="myAreaChart" width="100%" height="30">
+            </canvas>
+          </div>
+
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+        <div>
+          <app-menu *ngIf="state == 'menu'"></app-menu>
+          <app-permission *ngIf="state == 'permission'"></app-permission>
+          <app-roles *ngIf="state == 'roles'"></app-roles>
+          <app-group *ngIf="state == 'group'"></app-group>
+          <app-user-list *ngIf="state == 'users_list'"></app-user-list>
+          <app-user-details *ngIf="state == 'users_details'"></app-user-details>
+          <app-user-roles *ngIf="state == 'users_roles'"></app-user-roles>
+          <app-posts *ngIf="state == 'posts'"></app-posts>
+          <app-sliders *ngIf="state == 'sliders'"></app-sliders>
+          <app-user-profile *ngIf="state =='user_profile'"></app-user-profile>
+          <app-user-course *ngIf="state =='user_course'"></app-user-course>
+          <app-contact *ngIf="state =='contact'"></app-contact>
+          <app-course *ngIf="state =='course'"></app-course>
+          <app-lessons *ngIf="state =='lesson'"></app-lessons>
+          <app-setting *ngIf="state=='setting'"></app-setting>
+        </div>
+
+        <!-- 
+          <div class="card mb-3">
+              <div class="card-header">
+                <i class="fas fa-chart-area"></i>
+              Area Chart Example</div>
+              <div class="card-body">
+                <canvas id="myAreaChart" width="100%" height="30"></canvas>
+              </div>
+              <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            </div> -->
+
+        <!-- /.container-fluid -->
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright © 2019 <b> <a href="https://cmcglobal.com.vn/">CMC Global</a> | Made by
+                  Anglar-PTIT</b></span>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <!-- /.content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary" type="button" data-dismiss="modal" (click)="log();">Logout</button>
+            <!-- <a class="btn btn-primary" >Logout</a> -->
+          </div>
+        </div>
+      </div>
+    </div>

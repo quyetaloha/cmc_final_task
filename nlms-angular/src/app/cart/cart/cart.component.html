@@ -1,0 +1,81 @@
+<app-header></app-header>
+<!-- <hr> -->
+<div class="container mt-5">
+
+    <div class="row my-3 justify-content-center">
+        <div class="ct-area vc_separator ">
+            <span class="vc_sep_holder vc_sep_holder_l">
+                <span class="vc_sep_line"></span>
+            </span>
+            <h4 class="heading_font">Shopping Cart</h4>
+            <span class="vc_sep_holder vc_sep_holder_r">
+                <span class="vc_sep_line"></span>
+            </span>
+        </div>
+    </div>
+    <table id="cart" class="table table-hover table-condensed">
+        <thead>
+            <tr>
+                <th style="width:56%">Course</th>
+                <th style="width:10%">Price</th>
+                <th style="width:7%">Contest</th>
+                <th style="width:7%">Status</th>
+                <th style="width:10%" class="text-center">Total</th>
+                <th style="width:10%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let course of listCourse">
+                <td data-th="Course">
+                    <div class="row">
+                        <div class="col-sm-2 hidden-xs">
+                            <img [src]="course.imgUrl" alt="..." class="img-responsive" />
+                        </div>
+                        <div class="col-sm-10">
+                            <h4 class="nomargin">{{course.name}}</h4>
+                            <p>{{course.briefInfo}}</p>
+                        </div>
+                    </div>
+                </td>
+                <td data-th="Price">${{course.salePrice}}</td>
+                <td data-th="Contest">
+                    <button class="btn status btn-info btn-sm">
+                        <i class="fas  fa-plus"></i> Add</button>
+                </td>
+                <td data-th="Status">
+                    <button class="btn status btn-success btn-sm">Active</button>
+                </td>
+                <td data-th="Total" class="text-center">${{course.salePrice}}</td>
+                <td class="actions " data-th="">
+
+                    <button class="btn btn-danger btn-sm" (click)="onDeleteClick(course)"><i class="fa fa-trash-o"></i></button>
+                </td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Go Back</a></td>
+                <td colspan="3" class="hidden-xs"></td>
+                <td class="hidden-xs text-center"><strong>Total ${{totalPrice | number}}</strong></td>
+                <td><button class="btn btn-success btn-block" [disabled]="listCourse.length == 0" (click)="onCheckoutClick()">Checkout <i class="fa fa-angle-right"></i></button></td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="logo-banner">
+            <ul>
+                <li><img src="/assets/img/logo-banner1.png"></li>
+                <li><img src="/assets/img/logo-banner2.png"></li>
+                <li><img src="/assets/img/logo-banner3.png"></li>
+                <li><img src="/assets/img/logo-honda.png"></li>
+                <li><img src="/assets/img/logo-toshiba.png"></li>
+                <li><img src="/assets/img/logo-lg-cns.png"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

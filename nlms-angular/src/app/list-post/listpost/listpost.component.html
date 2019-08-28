@@ -1,0 +1,291 @@
+<ngx-spinner>
+    <p style="color: white">Loading...</p>
+</ngx-spinner>
+<app-header></app-header>
+<app-slider></app-slider>
+<div class="container mb-5">
+    <!-- phan content tren -->
+    <div class="row">
+        <div class="col-md-8">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <h4 class="mb-0 pr-2 title-blog">Featured Posts</h4>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler1"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="navbar-toggler-icon"></i>
+                </button>
+                <div class="collapse navbar-collapse ml-5" id="navbarToggler1">
+
+                    <!-- <ul class="nav nav-sm navbar-nav mr-md-auto mr-lg-0 mt-2 mt-lg-0 align-self-end" role="tablist">
+                        <li class="nav-item-blog">
+                            <a class="nav-link bg-color-travel active" id="nav-outdoor-tab" data-toggle="tab"
+                                href="#nav-outdoor" role="tab" aria-selected="true">Travel</a>
+                        </li>
+                        <li class="nav-item-blog">
+                            <a class="nav-link bg-color-food" id="nav-food-tab" data-toggle="tab" href="#nav-food"
+                                role="tab" aria-selected="false">Food</a>
+                        </li>
+                        <li class="nav-item-blog">
+                            <a class="nav-link bg-color-sports" id="nav-travel-tab" data-toggle="tab"
+                                href="#nav-outdoor" role="tab" aria-selected="false">Sports</a>
+                        </li>
+                        <li class="nav-item-blog">
+                            <a class="nav-link bg-color-fashion" id="nav-fashion-tab" data-toggle="tab"
+                                href="#nav-fashion" role="tab" aria-selected="false">Fashion</a>
+                        </li>
+                    </ul> -->
+                </div>
+            </nav>
+            <div class="line line-xs line-dark"></div>
+
+            <div class="content-blog">
+                <div class="row">
+                    <!-- phan ben phai -->
+                    <div class="col-md-6">
+                        <article class="entry">
+                            <div class="entry-img">
+                                <img [src]="pinnedPost.imgUrl" [routerLink]="['/blog-detail', pinnedPost.id]">
+                                <div class="entry-categories">
+                                    <p class="bg-travel">new!</p>
+                                </div>
+                            </div>
+
+                            <div class="entry-title">
+                                <h3 [routerLink]="['/blog-detail', pinnedPost.id]">{{pinnedPost.title}}</h3>
+                            </div>
+                            <ul class="entry-meta clearfix">
+                                <li>
+                                    <span>By {{pinnedPost.createdByUser}}</span>
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i>
+                                    <span>{{pinnedPost.createdDate | date}}</span>
+                                </li>
+                                <li>
+                                    <span>View: {{pinnedPost.clickCount}}</span>
+                                </li>
+                            </ul>
+                            <div class="entry-content clearfix">
+                                <p>{{pinnedPost.briefInfo}}</p>
+                            </div>
+                        </article>
+                    </div>
+                    <!-- phan ben trai -->
+                    <div class="col-md-6">
+                        <article class="spost clearfix" *ngFor="let post of featuredPost">
+                            <div class="entry-img">
+                                <img [src]="post.imgUrl" [routerLink]="['/blog-detail', post.id]">
+                            </div>
+                            <div class="entry-c">
+                                <div class="entry-title">
+                                    <h4 [routerLink]="['/blog-detail', post.id]">{{post.title}}</h4>
+                                </div>
+                                <ul class="entry-meta clearfix">
+                                    <li>
+                                        <span>by {{post.createdByUser}}</span>
+                                    </li>
+                                    <li>
+                                        <i class="far fa-clock"></i>
+                                        <span>{{post.createdDate | date}}</span>
+                                    </li>
+                                    <li>
+                                        <span>View: {{post.clickCount}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="newletter">
+                <h4 class="mb-0 pr-2 title-blog">FeedBack</h4>
+            </div>
+            <div class="line line-xs line-market"></div>
+            <div class="letter">
+                <div class="letter-body">
+                    <form class="letter-form-blog">
+                        <div class="letter-infor">
+                            <i class="far fa-envelope"></i>
+                            <h3 class="">Send me your opinion</h3>
+                            <p>Always ready to receive your opinion</p>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="email" class="form-control" placeholder="your email address..." name="">
+                        </div>
+                        <button class="btn btn-lg text-white btn-block" type="submit">
+                            Sign in
+                        </button>
+                        <div class="letter-infor-spam">
+                            <small class="text-muted font-italic">Please don't spam</small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- phan cocntent duoi -->
+    <div class="row">
+        <div class="col-md-8">
+            <div class="content-latest-post">
+                <h4 class="title-blog">Latest Post</h4>
+                <div class="line line-xs line-sports"></div>
+                <div class="ipost row mb-4 mb-lg-4 clearfix" *ngFor="let post of recentPost">
+                    <div class="col-md-5">
+                        <div class="entry-img">
+                            <img [src]="post.imgUrl" [routerLink]="['/blog-detail', post.id]">
+                            <div class="entry-categories">
+                                <p class="bg-sports">new!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="entry-title mt-lg-0 mt-3">
+                            <h3 [routerLink]="['/blog-detail', post.id]">{{post.title}}</h3>
+                        </div>
+                        <ul class="entry-meta clearfix">
+                            <li>
+                                <span>by {{post.createdByUser}}</span>
+                            </li>
+                            <li>
+                                <i class="far fa-clock"></i>
+                                <span>{{post.createdDate | date}}</span>
+                            </li>
+                            <li>
+                                <span>View: {{post.clickCount}}</span>
+                            </li>
+                        </ul>
+                        <div class="entry-content mt-0 ">
+                            <p>{{post.briefInfo}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border mt-4">
+                <div class="card-header p-3 pl-4 bg-transparent">
+                    <h4 class="title-blog">opinion polls</h4>
+                </div>
+                <div class="card-body">
+                    <div class="scroll-wrap">
+                        <div class="scroll">
+                            <article class="spost clearfix">
+                                <div class="entry-c">
+                                    <div class="entry-title-opinion">
+                                        <h4>Maradona says Messi didn't deserve Golden Ball?</h4>
+                                    </div>
+                                    <ul class="entry-meta clearfix ">
+                                        <li><i class="  fas fa-thumbs-up text-success"></i>80%</li>
+                                        <li><i class=" ml-5 fas fa-thumbs-down text-danger"></i>20%</li>
+                                    </ul>
+                                </div>
+                            </article>
+                            <article class="spost clearfix">
+                                <div class="entry-c">
+                                    <div class="entry-title-opinion">
+                                        <h4>Maradona says Messi didn't deserve Golden Ball?</h4>
+                                    </div>
+                                    <ul class="entry-meta clearfix ">
+                                        <li><i class="  fas fa-thumbs-up text-success"></i>80%</li>
+                                        <li><i class=" ml-5 fas fa-thumbs-down text-danger"></i>20%</li>
+                                    </ul>
+                                </div>
+                            </article>
+                            <article class="spost clearfix">
+                                <div class="entry-c">
+                                    <div class="entry-title-opinion">
+                                        <h4>Maradona says Messi didn't deserve Golden Ball?</h4>
+                                    </div>
+                                    <ul class="entry-meta clearfix ">
+                                        <li><i class="  fas fa-thumbs-up text-success"></i>80%</li>
+                                        <li><i class=" ml-5 fas fa-thumbs-down text-danger"></i>20%</li>
+                                    </ul>
+                                </div>
+                            </article>
+                            <article class="spost clearfix">
+                                <div class="entry-c">
+                                    <div class="entry-title-opinion">
+                                        <h4>Maradona says Messi didn't deserve Golden Ball?</h4>
+                                    </div>
+                                    <ul class="entry-meta clearfix ">
+                                        <li><i class="  fas fa-thumbs-up text-success"></i>80%</li>
+                                        <li><i class=" ml-5 fas fa-thumbs-down text-danger"></i>20%</li>
+                                    </ul>
+                                </div>
+                            </article>
+                            <article class="spost clearfix">
+                                <div class="entry-c">
+                                    <div class="entry-title-opinion">
+                                        <h4>Maradona says Messi didn't deserve Golden Ball?</h4>
+                                    </div>
+                                    <ul class="entry-meta clearfix ">
+                                        <li><i class="  fas fa-thumbs-up text-success"></i>80%</li>
+                                        <li><i class=" ml-5 fas fa-thumbs-down text-danger"></i>20%</li>
+                                    </ul>
+                                </div>
+                            </article>
+                            <article class="spost clearfix">
+                                <div class="entry-c">
+                                    <div class="entry-title-opinion">
+                                        <h4>Maradona says Messi didn't deserve Golden Ball?</h4>
+                                    </div>
+                                    <ul class="entry-meta clearfix ">
+                                        <li><i class="  fas fa-thumbs-up text-success"></i>80%</li>
+                                        <li><i class=" ml-5 fas fa-thumbs-down text-danger"></i>20%</li>
+                                    </ul>
+                                </div>
+                            </article>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- phan popular blog -->
+
+    <div class="row">
+
+        <div class="col-md-12 mb-3">
+            <h4 class="title-blog mb-3">Popular Blog</h4>
+        </div>
+
+        <div class="col-md-4" *ngFor="let post of popularPost; index as i">
+            <div class="popular-blog-body">
+                <article class="entry entry-post" [style.backgroundImage]="listImgUrl[i]"
+                    [routerLink]="['/blog-detail', post.id]">
+                    <div class="text-over px-4 pb-2">
+                        <div class="entry-c">
+                            <div class="entry-categories">
+                                <p class="bg-fashion">new!</p>
+                            </div>
+                            <div class="entry-title">
+                                <h3 class="text-popular" [routerLink]="['/blog-detail', post.id]">{{post.title}}</h3>
+                            </div>
+                            <div class="entry-meta clearfix">
+                                <li>
+                                    <span>by {{post.createdByUser}}</span>
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i>
+                                    <span>{{post.createdDate | date}}</span>
+                                </li>
+                                <li>
+                                    <span>View: {{post.clickCount}}</span>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,122 @@
+<div class="container">
+	<div class="table-wrapper">
+		<div class="table-title">
+			<div class="row">
+				<div class="col-sm-5">
+					<h2>Sliders <b>Management</b></h2>
+				</div>
+				<div class="col-sm-7">
+
+					<div class="col-xs-7">
+						<input class="form-control" id="ex2" type="text" placeholder="Search" [(ngModel)]="searchName">
+					</div>
+					
+					<a (click)="onSubmit($event)" class="btn btn-primary mr"><i class="fas fa-plus-circle"></i> <span> <b>Thêm mới</b> </span></a> 
+					<!-- <button class="btn aqua-gradient btn-rounded b" type="submit">Search</button>						 -->
+				</div>
+			</div>
+		</div>
+<div *ngIf="!submitted"> 		
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Tiêu đề</th>
+					<th>Ảnh nền</th>						
+					<th>Khẩu hiệu</th>
+					<th>Trạng thái</th>
+					<th>Hành động</th>
+				</tr>
+			</thead>
+			<tbody>
+				 <tr *ngFor="let list1 of dataArr |filterName:searchName"> 
+					<td>{{list1.title}}</td>
+					<td><a href="#"><img src={{list1.imgUrl}} style="
+					height: 43px;" class="avatar" alt="Avatar"></a></td>                     
+					<td>{{list1.text}}</td>
+					<td><span class="status text-success">&bull;</span>{{list1.status}}</td>	
+					<td>
+						<a (click)="onSetting(list1);" class="edit" title="Edit" data-toggle="tooltip">
+						  <i class="fas fa-pen"></i>
+						</a>						
+			
+						<a  class="settings" title="Delete"  data-toggle="modal" data-target="#logoutModal">
+						  <i class="fas fa-trash"></i>
+						</a>
+					  </td>
+					  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+						  <div class="modal-content">
+						  <div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Do you want to delete it?</h5>
+							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+							</button>
+						  </div>
+						  <div class="modal-body">Select "delete" below if you are ready to delete your item.</div>
+						  <div class="modal-footer">
+							<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+							<button class="btn btn-secondary" type="button" data-dismiss="modal" (click)="onDelete(list1);">Delete</button>
+						  </div>
+						  </div>
+						</div>
+					</div> 
+				</tr>
+				
+			</tbody>
+		</table>
+		<div class="clearfix">
+			<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+			<ul class="pagination">
+				<li class="page-item disabled"><a href="#">Previous</a></li>
+				<li class="page-item"><a href="#" class="page-link">1</a></li>
+				<li class="page-item"><a href="#" class="page-link">2</a></li>
+				<li class="page-item active"><a href="#" class="page-link">3</a></li>
+				<li class="page-item"><a href="#" class="page-link">4</a></li>
+				<li class="page-item"><a href="#" class="page-link">5</a></li>
+				<li class="page-item"><a href="#" class="page-link">Next</a></li>
+			</ul>
+		</div>
+	</div>
+<div *ngIf="submitted">
+	<form>
+
+	<div class="controls">
+
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="form_name">Tiêu đề *</label>
+				<input id="form_name" type="text" name="title1" class="form-control" placeholder="Xóa question *" required="required" data-error="Name is required." [(ngModel)]="slider.title">
+				<div class="help-block with-errors"></div>
+			</div>
+		</div>	
+
+		
+		<div class="col-md-6">
+			<div class="form-group">
+				<form>
+					<label for="form_email">Image URL *</label>
+					  <input id="form_name" type="email" name="imageUrl1" class="form-control" placeholder="https://www.youtube.com/watch?v=vk-8XqwsyeA&t=3192s" required="required" [(ngModel)]="slider.imgUrl">
+					  <div class="help-block with-errors"></div>
+				</form>
+			</div>
+		</div>
+
+
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="form_message">Khẩu hiệu *</label>
+				<textarea id="form_message" name="text1" class="form-control" placeholder="Write content here... *" rows="4" required="required" data-error="Please, leave us a content."[(ngModel)]="slider.text"></textarea>
+				<div class="help-block with-errors"></div>
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<input type="submit" class="btn btn-success btn-send"  (click)="onClick(slider)" value="+Add">
+			<input type="submit" class="btn btn-default" (click)="onBack($event)" value="Close">
+		</div>
+	</div>
+</form>
+</div>
+
+</div>	
+</div>  

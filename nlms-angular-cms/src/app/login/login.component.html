@@ -1,0 +1,44 @@
+<div class="login-form">
+    <div class="imgcontainer">
+        <img src="./assets/images/cmc.jpg" alt="logo" class="logo">
+    </div>
+    <form #heroForm="ngForm">
+        <h2 class="text-center">Sign in</h2>   
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control mb-2" name="username" placeholder="Username" [(ngModel)] ="user.username" required="required" name="username" #username="ngModel" >             
+            </div>
+            <div [hidden]="username.valid || username.pristine"
+            class="alert alert-danger">
+            Username is required
+   </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control mb-2" name="password" placeholder="Password" required="required" [(ngModel)] ="user.password" name="password"
+                #password="ngModel">             
+            </div>
+            <div [hidden]="password.valid || password.pristine"
+     						class="alert alert-danger">
+ 							Password is required
+					</div> 
+        </div>        
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary login-btn btn-block" [disabled]="!heroForm.form.valid" (click)="onClick(user);">Sign in</button>
+        </div>
+        <div class="clearfix">
+            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me </label>
+            <a href="#" class="pull-right">Forgot Password?</a>
+        </div>
+        <div class="or-seperator"><i>or</i></div>
+        <p class="text-center">Login with your social media account</p>
+        <div class="text-center social-btn">
+            <a href="#" class="btn btn-primary"><i class="fa fa-facebook"></i>&nbsp; Facebook</a>
+            <!-- <a href="#" class="btn btn-info"><i class="fa fa-twitter"></i>&nbsp; Twitter</a> -->
+            <a href="#" class="btn btn-danger"><i class="fa fa-google"></i>&nbsp; Google</a>
+        </div>
+    </form>
+    <p class="text-center text-muted small">Don't have an account? <a href="#">Sign up here!</a></p>
+</div>

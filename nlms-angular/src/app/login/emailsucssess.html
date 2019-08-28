@@ -1,0 +1,70 @@
+<div class="mess-dialog">
+  <h1 mat-dialog-title class="fadeIn first">Sucssess</h1>
+  <div mat-dialog-content class="fadeIn second">
+    <p><strong>Thank you!</strong> <br>
+      Please Confirm email / account</p>
+  </div>
+  <div mat-dialog-actions class="fadeIn third">
+    <button  type="button" class="btn btn-success" [mat-dialog-close]="" cdkFocusInitial>Done</button>
+  </div>
+</div>
+<style>
+  .mess-dialog {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    animation-name: fadeInDown;
+    animation-duration: 1s;
+    /* background-color: red; */
+  }
+
+  .fadeIn {
+    opacity: 0;
+    animation: fadeIn ease-in 0.7;
+    animation-fill-mode: forwards;
+    animation-duration: 0.7s;
+  }
+
+  .fadeIn.first {
+    vertical-align: middle;
+    font-size: 23px !important;
+    color: rgba(46, 204, 113, 1);
+    align-content: center;
+    animation-delay: 0.2s;
+  }
+
+  .fadeIn.second {
+    animation-delay: 0.3s;
+  }
+
+  .fadeIn.third {
+    float: right;
+    animation-delay: 0.2s;
+  }
+
+  .fadeIn.second p {
+    font-size: 15px;
+  }
+
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+    }
+
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+</style>
